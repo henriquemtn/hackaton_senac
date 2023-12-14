@@ -66,33 +66,72 @@
                 <i class="fa-solid fa-plus" style="color: #0BA2ED;"></i>
             </div>
             <div class="content">
-                <h3>Administração de Medicamentos</h3>
+                <h3>Nome do procedimento</h3>
                 <div class="lista">
                     <div class="insumo">
-                        <h4>Ampola</h4>
-                        <h4>1</h4>
-                    </div>
-                    <div class="insumo">
-                        <h4>Gaze</h4>
-                        <h4>1</h4>
-                    </div>
-                    <div class="insumo">
-                        <h4>Seringa</h4>
-                        <h4>1</h4>
                     </div>
                 </div>
                 <div class="total">
-                    <h3>Total:</h3>
-                    <h3>3</h3>
+                    <h3 id="name">Total:</h3>
+                    <h3 id="quantidade">0</h3>
                 </div>
                 <div class="total">
-                    <h3>Custo:</h3>
-                    <h3>R$ 5,00</h3>
+                    <h3 id="name">Custo:</h3>
+                    <h3 id="custo">R$ 0,00</h6>
                 </div>
             </div>
         </div>
     </div>
     <hr>
+    <script>
+        // Fazendo a requisição HTTP para a URL
+        const url = 'http://localhost:8080/procedimento/detalharProcedimento/1';
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const procedimento = document.querySelector('.content');
+                procedimento.querySelector('h3').innerText = data.nomeProcedimento;
+
+                // Mapeando os insumos e calculando as quantidades
+                const insumosMap = {};
+
+                data.insumos.forEach((insumo, index) => {
+                    // Criando elementos para cada insumo
+                    const newInsumo = document.createElement('div');
+                    newInsumo.classList.add('insumo');
+
+                    const nomeInsumo = document.createElement('h4');
+                    nomeInsumo.innerText = insumo.nomeInsumo;
+                    nomeInsumo.id = `nomeInsumo_${index}`;
+
+                    const quantidadeInsumo = document.createElement('h4');
+                    quantidadeInsumo.innerText = insumosMap[insumo.nomeInsumo] || 0;
+                    quantidadeInsumo.id = `quantidadeInsumo_${index}`;
+
+                    newInsumo.appendChild(nomeInsumo);
+                    newInsumo.appendChild(quantidadeInsumo);
+                    procedimento.querySelector('.lista').appendChild(newInsumo);
+
+                    // Atualizando o mapa de insumos
+                    if (insumosMap[insumo.nomeInsumo]) {
+                        insumosMap[insumo.nomeInsumo]++;
+                    } else {
+                        insumosMap[insumo.nomeInsumo] = 1;
+                    }
+                });
+                // Calculando o total de insumos
+                const totalInsumos = Object.values(insumosMap).reduce((total, quantidade) => total + quantidade, 0);
+
+                // Atualizando o total na página
+                const total = procedimento.querySelector('.total #quantidade');
+                total.innerText = totalInsumos;
+
+                // Calculando e atualizando o custo do procedimento
+                const custo = procedimento.querySelector('.total #custo');
+                custo.innerText = `R$ ${data.custoProcedimento.toFixed(2)}`;
+            })
+            .catch(error => console.error('Erro:', error));
+    </script>
 </body>
 
 </html>
