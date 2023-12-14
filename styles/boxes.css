@@ -1,0 +1,35 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+    gap: 60px;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 410px;
+    height: 345px;
+    background-color: #F6F6F6;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    font-size: 24px;
+}
+
+a:hover {
+    text-decoration: none;
+
+}
+
+.box:hover {
+    background-color: #0BA2ED;
+    transition: 0.3s;
+    color: #fff;
+}

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre&family=Arsenal:wght@400;700&family=Pacifico&family=Roboto:wght@400;700&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Arsenal', sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.navbar-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-menu .options {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    height: 50px;
+}
+
+.welcome h3 {
+    font-size: 17px;
+    color: #444444;
+    margin: 0;
+}
+
+.welcome p {
+    font-size: 14px;
+    color: #444444;
+    margin: 0;
+}
+
+.config {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    height: 60px;
+    margin-top: 10px;
+    margin-right: 30px;
+}
+
+.config h3 {
+    font-size: 17px;
+    color: #444444;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+.config i {
+    font-size: 24px;
+    color: #000000;
+    margin: 0;
+    cursor: pointer;
+}
+
+.icons {
+    padding-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+menu {
+    outline: none;
+    display: flex;
+    gap: 50px;
+    margin-block-end: 0em;
+    margin-top: 50px;
+}
+
+a {
+    text-decoration: none;
+}
+
+menu li {
+    list-style: none;
+    text-decoration: none;
+    color: #444444;
+    font-size: 22px;
+    padding: 5px 30px;
+}
+
+menu li:hover {
+    color: #0BA2ED;
+    transition: 0.2s;
+}
+
+.choiced {
+    background-color: #0BA2ED;
+    border-radius: 6px 6px 0px 0px;
+    color: white;
+}
+
+.choiced:hover {
+    color: white;
+}
+
+.navbar .bar {
+    width: 100%;
+    height: 30px;
+    background-color: #0BA2ED;
+}
